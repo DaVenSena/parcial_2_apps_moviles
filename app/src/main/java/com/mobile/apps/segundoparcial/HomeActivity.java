@@ -47,7 +47,7 @@ public class HomeActivity extends AppCompatActivity {
                     earth = "Tierra";
                     species = "Humano";
                     sex = "Masculino";
-                    location = "Mi casa";
+                    location = "USA";
                     break;
                 case 1:
                     name = "Summer";
@@ -55,14 +55,14 @@ public class HomeActivity extends AppCompatActivity {
                     earth = "Tierra";
                     species = "Humano";
                     sex = "Femenino";
-                    location = "Soledad";
+                    location = "USA";
                     break;
                 case 2:
                     name = "Keara";
                     earth = "Desconocido";
                     species = "Krootabulan";
                     sex = "Femenino";
-                    location = "Mi casa";
+                    location = "Krootabulon";
                     imageUrl = "https://rickandmortyapi.com/api/character/avatar/190.jpeg";
                     break;
                 case 3:
@@ -72,6 +72,7 @@ public class HomeActivity extends AppCompatActivity {
                     location = "USA";
                     name = "Jerry";
                     imageUrl = "https://rickandmortyapi.com/api/character/avatar/241.jpeg";
+                    alive = false;
                     break;
             }
             characters.add(new Character(name, alive, species, earth, sex, location, imageUrl));

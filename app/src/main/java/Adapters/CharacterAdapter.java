@@ -9,11 +9,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mobile.apps.segundoparcial.DetailsActivity;
 import com.mobile.apps.segundoparcial.R;
 import com.squareup.picasso.Picasso;
 
@@ -69,10 +69,13 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
             if (!character.isAlive()) alive = "Muerto";
             txtName.setText(character.getName());
             txtAlive.setText(alive);
+            if (!character.isAlive()) txtAlive.setTextColor(0xFFFF0000);
             txtSpecies.setText(character.getSpecies());
             Picasso.get().load(Uri.parse(character.getImageUrl())).into(imgChar);
             btnSeeMore.setOnClickListener(view -> {
-                Toast.makeText(view.getContext(), "No me dio tiempo :(", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(view.getContext(), DetailsActivity.class);
+                i.putExtra("character", character);
+                ContextCompat.startActivity(view.getContext(), i, null);
             });
         }
     }
