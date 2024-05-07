@@ -1,6 +1,7 @@
 package com.mobile.apps.segundoparcial;
 
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,7 +23,11 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        character = (Character) getIntent().getSerializableExtra("character");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            character = getIntent().getSerializableExtra("character", Character.class);
+        } else {
+            character = (Character) getIntent().getSerializableExtra("character");
+        }
 
         txtName = findViewById(R.id.txtNombreDet);
         txtEarth = findViewById(R.id.txtEarthDet);
@@ -41,5 +46,7 @@ public class DetailsActivity extends AppCompatActivity {
         txtSex.setText(character.getSex());
         txtEarth.setText(character.getEarth());
         txtName.setText(character.getName());
+
+        findViewById(R.id.btnBackDet).setOnClickListener(view -> finish());
     }
 }
